@@ -1,0 +1,338 @@
+/*  Base Styles */
+/* This sets up a basic reset for all elements so padding and margins don't get weird */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling the main heading (my name) to look futuristic and eye-catching */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  color: rgb(181, 255, 7);
+  text-align: center;
+  letter-spacing: 4px;
+}
+
+/*  Body and Links  */
+/* Using a clean font for the rest of the page and dark background for contrast */
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  background-color: #111;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Giving all links a bold red color with a smooth hover effect */
+a {
+  color: #f80404;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #e50c0c;
+}
+
+/*  Navigation  */
+/* Sticky nav bar stays on top as we scroll */
+.main-nav {
+  background-color: rgb(14, 150, 228);
+  text-align: center;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Centering nav links with flex and spacing them out */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+/* Making nav items a bit bigger and bold */
+.main-nav li {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.main-nav a {
+  color: #fff;
+}
+
+/*  Section Styles (shared across all sections) */
+/* Giving each section full height and center-aligned content */
+.section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  transform-origin: center;
+  z-index: 1;
+}
+
+/* This dark overlay makes the text readable over background images */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  transition: background 0.6s ease-in-out;
+}
+
+/* Making sure everything inside the section stays above the dark overlay */
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Adds zoom and glow effect when hovering a section */
+.section:hover {
+  transform: scale(1.02);
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Slightly blurs the other sections when one is hovered */
+.section:hover ~ .section {
+  filter: blur(3px);
+  transform: scale(0.98);
+  opacity: 0.6;
+  z-index: 0;
+  transition: transform 0.6s ease-in-out, filter 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+/* Hero Section  */
+/* Fullscreen background image with centered intro content */
+.hero-bg {
+  background: url('hero.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: white;
+  transition: background-size 0.6s ease-in-out;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Profile image styled as a clean circle with border */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+/*  About Section  */
+/* Background image for the about section */
+.about-bg {
+  background: url('about.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* Skills Section  */
+/* Skills background and subtle transform animation on hover */
+.skills-bg {
+  background: url('skill.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: white;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Displaying skills in a responsive grid layout */
+.skills-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Styling each skill with a bright background and rounded corners */
+.skills-grid span {
+  background: rgba(252, 248, 3, 0.807);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+}
+
+/* Projects Section */
+/* Background image for projects section */
+.projects-bg {
+  background: url('project.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: white;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Grid layout to display project cards side by side */
+.projects-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  padding: 0 2rem;
+}
+
+/* Each project card has a semi-transparent background */
+.project {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: background 0.4s ease;
+  max-width: 300px;
+}
+
+/* Slightly darken the project card on hover */
+.project:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Project image styles */
+.project img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Project title */
+.project h3 {
+  margin: 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+/* Project description */
+.project p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Contact Section */
+/* Background image and color for contact area */
+.contact-bg {
+  background: url('contact.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: white;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Contact area layout using Flexbox */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Styling the contact form */
+.contact-form {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+/* Input and textarea fields */
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* Submit button styles */
+.contact-form button {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover changes to green */
+.contact-form button:hover {
+  background-color: #59d104;
+}
+
+/* Optional section for additional contact info */
+.contact-info {
+  flex: 1 1 200px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.contact-info p {
+  margin-top: 0;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contact-info li {
+  margin-bottom: 0.75rem;
+}
+
+.contact-info a {
+  color: #aaddff;
+  font-weight: 600;
+}
+
+/* Footer */
+/* Simple dark footer with centered copyright */
+.footer {
+  background: #222;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Responsive Design  */
+/* Adjusting layout for smaller screens */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+}
